@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 2018_11_10_055701) do
     t.integer "distinguish"
     t.integer "dateDistinguish"
     t.integer "user_distinguish"
+    t.integer "nightalpha"
+    t.integer "holidayalpha"
     t.boolean "picked", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

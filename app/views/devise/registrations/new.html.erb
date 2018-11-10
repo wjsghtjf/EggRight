@@ -4,16 +4,15 @@
 
 </video>
 
+<body class="mainpage">
 <div class="row">
   <div class="col-md-3">
     
   </div>
   <center>
   <div class="col-md-6">
-    <div class="login_frame">
-    <a href="/"><img src="/assets/logo_hs.png" class="logo_main">
-    <img  class="logo-hover-preload" style='display:none'></a><br>
-    <h3>:: 회원가입</h3>
+    <div class="login_frame"><br>
+    <h3>회원가입</h3>
     
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
@@ -45,7 +44,7 @@
         <%= f.label :비밀번호_확인, :class => "login_label" %><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password", :class => "login_field" %>
       </div>
-    <br>
+    <br><br><br>
       <div class="actions">
         <%= f.submit "가입하기", :class => "button_login" %>
       </div>
@@ -56,3 +55,4 @@
   </center>
   <div class="col-md-3"></div>
 </div>
+</body>

@@ -12,9 +12,33 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     
+    <!--<script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>-->
+  <!--<script>-->
+  <!--  var config = {-->
+  <!--    apiKey: "AIzaSyDcb_c5nz_9IFogQKZoq2Ttb55nXcjuu1M",-->
+  <!--    authDomain: "eggright-e1560.firebaseapp.com",-->
+  <!--    databaseURL: "https://eggright-e1560.firebaseio.com",-->
+  <!--    projectId: "eggright-e1560",-->
+  <!--    storageBucket: "eggright-e1560.appspot.com",-->
+  <!--    messagingSenderId: "953563892163"-->
+  <!--  };-->
+  <!--  firebase.initializeApp(config);-->
+  <!--</script>-->
   </head>
 
   <body>
     <%= yield %>
   </body>
+  
+      <% if user_signed_in? %>
+  <footer>
+    
+    <br><br>
+    ⓒ 금요일팀<br><br>
+    알바생의 알 권리를 위하여.<br><br>
+    All Rights Reserved. <br><br>
+    <img src="/assets/logo_hs.png" style="width: 4.5em; height: 3em">
+  </footer>
+    <% end %>
+
 </html>

@@ -1,0 +1,166 @@
+.info_nav {
+    
+    background-color: transparent;
+    
+}
+
+
+.info_logo {
+   content: url('logo_hs.png');
+   
+    
+    width: 5em;
+    height: 4em;
+    vertical-align: bottom;
+    margin-top: 1em;
+}
+
+
+
+.button_login_info {
+    
+    color: white;
+	border: 1.5px solid white;
+	background: transparent;
+	padding: 0.7em;
+	
+	border-radius: 10px;
+	
+	
+}
+
+.button_login_info:hover {
+    
+    background-color: white;
+    
+}
+
+
+.login_color:hover {
+    
+    color: black;
+    text-decoration: none;
+    
+}
+
+.login_color, .login_color:visited {
+    
+    color: white;
+    
+}
+
+
+
+.mainpage_info {
+	
+	background-image: url("mainpage.jpg");
+	background-size: 100vw 100vh;
+	background-position: cover;
+	width: 100vw;
+	height: 100vh;
+	z-index: -999;
+}
+
+
+.info_content {
+    
+    margin-top: 1.5em;
+    margin-left: 3em;
+    font-size: 40px;
+    font-weight: 600;
+    -webkit-animation: slideIn 1s ease forwards;
+    animation: slideIn 1s ease forwards;
+}
+
+p {
+  //opacity: 0;
+  margin: 25px 0 0;
+  
+  &.col{
+    font-size: 14px;
+    width: 49%;
+    float: left;
+    margin-right: 2%;
+    margin-bottom: 10px;
+  }
+}
+.paraFadeIn {
+    -webkit-animation: slideIn 0.8s ease 0.3s forwards;
+    animation: slideIn 0.8s ease 0.3s forwards;
+}
+@-webkit-keyframes slideIn {
+    0%{
+        -webkit-transform: translateY(50px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateY(0);
+        opacity: 1;
+    }
+}
+@keyframes slideIn {
+    0% {
+        -webkit-transform: translateY(50px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+.about_info {
+    
+    width: 100vw;
+    height: 40vh;
+    padding: 3em;
+    
+}
+
+.al_info {
+    
+    width: 20em;
+    height: 20em;
+    display: inline-block;
+    border: none;
+    background-color: #f8f8f8;
+    margin-left: 3em;
+    margin-right: 3em;
+    margin-collapse: 2em;
+    word-break:break-all;
+    padding: 2em;
+
+
+}
+
+.our_team {
+    
+    margin-top: 20em;
+    width: 100vw;
+    height: 40vh;
+    
+}
+
+.person {
+    
+    
+    display: inline-block;
+    width: 15vw;
+    height: 20vh;
+    text-align: center;
+    
+}
+
+.person_container {
+    
+    margin-left: 13em;
+    
+}
+
+.photo_circle {
+    
+    width: 100px; height: 100px;
+    border-radius: 50%;
+}
+

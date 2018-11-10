@@ -19,6 +19,8 @@ class CreateAlbas < ActiveRecord::Migration[5.2]
       t.integer :distinguish
       t.integer :dateDistinguish
       t.integer :user_distinguish
+      t.integer :nightalpha
+      t.integer :holidayalpha
       # count 구별
       t.boolean :picked, :default=> false
       

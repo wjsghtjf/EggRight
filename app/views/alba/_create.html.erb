@@ -3,7 +3,8 @@
             
     <div class= "form-group">
         <label for="input_name">알바 이름 </label>
-        <input class="form-control" type="text" placeholder="약칭을 입력해주세요." name="alba_name" id="input_name" required='true'/>
+        <input class="form-control" type="text" placeholder="약칭을 입력해주세요.(최대 10글자)" 
+        name="alba_name" id="input_name" required='true' maxlength="10"/>
     </div>
     
     <div class= "form-group">
@@ -19,12 +20,13 @@
         <label>근무 시작 시간</label>
         <table cols=2 border='0px none' class="table-time">
             <td width="50%">
+                
                 <select class="form-control" id="start_time_h" name="alba_s_hour">
                     <% for i in 0..30 %>
                     <% if i<24 %>
-                        <option><%= i %>시</option>
+                        <option><%=i %>시</option>
                     <% else %>
-                        <option><%= i %>시 (오전 <%= i-24 %>시)</option>
+                        <option><%=i %>시 (오전 <%= i-24 %>시)</option>
                     <% end %>
                     <% end %>
                 </select>
@@ -49,7 +51,7 @@
         <table cols=2 border='0px none' class="table-time">
             <td width="50%" >
               <select class="form-control" id="end_time_h" name="alba_e_hour">
-                <% for i in 0..30 %>
+                <% for i in @a..30 %>
                  <%if i<24%>
                     <option><%= i %>시</option>
                   <%else%>
@@ -74,7 +76,7 @@
    <div class="form-group">
         <label for="input_money_hour">시급 </label>
         <input class="form-control" type="number" placeholder="시급을 입력해주세요." name= "alba_money_hour" id="input_money_hour" required='true'
-        min="0" max="100000" step="1000" />
+        min="0" max="100000" step="any" />
     </div>
     
     <!-- 주휴/야간/휴일/연장 유무체크 -->
@@ -86,12 +88,12 @@
     <div class="form-check">
       <input type="checkbox" class="form-check-input" id="exampleCheck2" name="alba_nightbonus">
       <label class="form-check-label" for="exampleCheck2"
-       data-balloon="※ 5인 이상의 사업장에서만 적용됩니다." data-balloon-pos="right"/>야간근로수당</label>
+       data-balloon="※  상시근로자가 5인 이상있는사업장에서 근무 할시 야간근로수당이 추가로적용됩니다." data-balloon-pos="right"/>근무장에 상시근로자가 5 명 이상 있나요?<label>
     </div>
     <div class="form-check">
       <input type="checkbox" class="form-check-input" id="exampleCheck3" name="alba_holidaybonus">
       <label class="form-check-label" for="exampleCheck3"
-      data-balloon="※ 휴일수당에 대한 설명 해주세요." data-balloon-pos="right"/>휴일근로수당</label>
+      data-balloon="※  휴일에  알바를 했다면  휴일근로수당을 추가로 받을 수 있습니다. "data-balloon-pos="right"/>작상하는 알바가 휴일에 진행된것이라면 체크해주세요<label>
     </div>
     <!--<div class="form-check">-->
     <!--  <input type="checkbox" class="form-check-input" id="exampleCheck1" name="alba_extendbonus">-->

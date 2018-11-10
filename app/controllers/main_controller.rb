@@ -1,46 +1,57 @@
 class MainController < ApplicationController
-  before_action :authenticate_user!
+  
+  before_action :authenticate_user!, except: [:info] 
   
   @@origin_color = ['#d54e21','#78a300','#0e76a8','#9cc2cb','#73716e','#ff7700','#ffcc00','#ff66b5','#6a5a8c']
   
+  def info
+    
+    
+    
+  end
   def _index
+    @final_night=0
+    @final_holiday=0
     # 이거슨 그냥 계산하기위한 것...지금은 index에서 하지만, \나중엔 home에서.
     # 옮기기만하면될듯..?!
     # home 화면에서 블록띄울떄, 블록개수를 세주는 변수 count 수 설정.. 주급,월급계산은 그걸로다가..
     @count=params[:alba_count]
     @albas=Alba.where("user_distinguish= :u_id", {:u_id => current_user.id})
-    @a=0;
-    @a_fix=0;
-    @b_fix=0;
-    @a10=0;
-    @b10=0;
-    @b=0;
-    @c=1.5;
-    @d=0;
-    @e1=0;
-    @e=0;
-    @final=0;
+    @a=0
+    @a_fix=0
+    @b_fix=0
+    @a10=0
+    @b10=0
+    @b=0
+    @c=1.5
+    @d=0
+    @e1=0
+    @e=0
+    @final=0
     
-    @money=0;
+    @money=0
   end
   
   def home
-    
-   
+    @fmoney=0
+    @count=0
+    @night_hour=0
+    @holiday_hour=0
     @albas=Alba.where("user_distinguish= :u_id", {:u_id => current_user.id})
-    @a=0;
-    @a_fix=0;
-    @b_fix=0;
-    @a10=0;
-    @b10=0;
-    @b=0;
-    @c=1.5;
-    @d=0;
-    @e1=0;
-    @e=0;
-    @final=0;
-    
-    @money=0;
+    @a=0
+    @a_fix=0
+    @b_fix=0
+    @a10=0
+    @b10=0
+    @b=0
+    @c=1.5
+    @d=0
+    @e1=0
+    @e=0
+    @final=0
+   @night_bonus=0
+   @holiday_bonus=0
+    @money=0
   end
   
   def create
@@ -62,6 +73,7 @@ class MainController < ApplicationController
     @alba.holidaybonus=params[:alba_holidaybonus]
     @alba.extendbonus=params[:alba_extendbonus]
     @alba.color=params[:alba_color]
+    
     
     
     
@@ -100,7 +112,8 @@ class MainController < ApplicationController
   
   def copy
      @albas=Alba.all
-     @a=0
+      @alba=Alba.find(params[:alba_count])
+     @a=@alba.id
      
     @albas.each do |a|
       if(a.picked==true)

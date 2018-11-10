@@ -14,12 +14,28 @@
  *= require_self
  */
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR');
-@import "login.scss";
+@import "info.scss";
+@import "main.scss";
 
 body {
-    
+    background-image: url("/assets/homebackground.jpg");
+    background-size:cover;
     font-family: 'Noto Sans KR', sans-serif;
+    -ms-overflow-style: none;
     
-    overflow: hidden
+}
+
+::-webkit-scrollbar {
+
+    display:none;
+
+}
+
+footer {
     
+    background-color: #55565b;
+    color: white;
+    text-align: center;
+    width: 100vw;
+    height: 28vh;
 }

@@ -4,28 +4,23 @@
     $color_list = [
 
 
-        {color:'#d54e21',title:'Red'},
+        {color:'#F8D1E0',title:'Red'},
+        
+        {color:'#F8E1E7', title:'Magenta'},
+        
+        {color:'#FBD6C6', title:'Orange'},
+        
+        {color:'#F7EBC3', title:'LightGreen'},
+        
+        {color:'#BED7D1', title:'Green'},
+        
+        {color:'#87CEEB', title:'Blue'}
 
-        {color:'#78a300',title:'Green'},
-
-        {color:'#0e76a8',title:'Blue'},
-
-        {color:'#9cc2cb',title:'Teal'},
-
-        {color:'#73716e',title:'Grey'},
-
-        {color:'#ff7700',title:'Orange'},
-
-        {color:'#ffcc00',title:'Yellow'},
-
-        {color:'#ff66b5',title:'Pink'},
-
-        {color:'#6a5a8c',title:'Purple'}
-        <% if current_user %>
-            <% current_user.palettes.each_with_index do |p,i|  %>
-                <%=raw(",{color: '#{p.color}' ,title: 'custom_#{i}'}") %>
-            <% end %>
-        <% end %>
+        // <#% if current_user %>
+        //     <#% current_user.palettes.each_with_index do |p,i|  %>
+        //         <%#=raw(",{color: '#{p.color}' ,title: 'custom_#{i}'}") %>
+        //     <#% end %>
+        // <#% end %>
     ];
     
     
@@ -73,7 +68,7 @@
 
             if(!$foundactive && self.children(".color-picker").val()!='' ){
 
-                    self.children('ul').append('<li class="active" title="Custom Color '+self.children(".color-picker").val()+'" style="background-color:'+self.children(".color-picker").val()+'"></li>');
+                    //self.children('ul').append('<li class="active" title="Custom Color '+self.children(".color-picker").val()+'" style="background-color:'+self.children(".color-picker").val()+'"></li>');
                     
                     if(self.children(".color-picker").hasClass('cp-show')){
 
@@ -85,7 +80,7 @@
 
             }
 
-            self.children('ul').append('<li class="add_new" title="Add New">+</li>');
+            // self.children('ul').append('<li class="add_new" title="Add New">+</li>');
 
      });
 

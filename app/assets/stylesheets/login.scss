@@ -10,15 +10,25 @@
      overflow: hidden;
 }
 
+.mainpage_info {
+	
+	background-image: url("mainpage.jpg");
+	background-size: 100vw 100vh;
+	background-position: cover;
+	width: 100vw;
+	height: 80vh;
+}
+
 
 .login_frame {
 	
-	margin-top: 5em;
+	margin-top: 4em;
 	background-color: white;
 	opacity: 0.8;
 	// border: 2px solid #888;
 	width: 60%;
-	height: 50em;
+	height: 40em;
+	border-radius: 10px;
 	
 }
 
@@ -26,8 +36,8 @@
    content: url('logo_hs.png');
    
     
-    width: 13em;
-    height: 11em;
+    width: 10em;
+    height: 8em;
     vertical-align: bottom;
     margin-top: 5em;
 }
@@ -36,8 +46,8 @@
     content: url('logo_hs_hide.png');
     
     
-    width: 13em;
-    height: 11em;
+    width: 10em;
+    height: 8em;
     vertical-align: bottom;
 }
 
@@ -57,7 +67,7 @@
 	left: 0;
 	padding: 0 0.25em;
 	width: 50%;
-	height: calc(100% - 1em);
+	height: calc(100% - 2em);
 	text-align: left;
 	pointer-events: none;
 }
@@ -68,7 +78,7 @@
 	left: 0;
 	padding: 0 0.25em;
 	width: 50%;
-	height: calc(100% - 0.6em);
+	height: calc(100% - 1.5em);
 	text-align: left;
 	margin-left: 4em;
 }
@@ -84,14 +94,19 @@
 	border-left: transparent;
 	border-right: transparent;
 	border-top: transparent;
-	border-bottom: 1px solid #ccc;
-	
+	border-bottom: 1.2px solid #ccc;
+	transition: all 1.4s;
 }
 
 .login_field:focus {
     
     outline: none;
+    border-bottom: 1.2px solid black;
    
+}
+
+.login_field:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px white inset;
 }
 
 

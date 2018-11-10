@@ -1,5 +1,29 @@
+<head>
+    <div class="nav">
+    <% if user_signed_in? %>
+        <div class="nav_content"><%= link_to "회원정보", edit_user_registration_path, :class => "nav_li" %></div>
+        <div class="nav_content"><%= link_to "로그아웃", destroy_user_session_path, method: :delete, :class => "nav_li" %></div>
+        <div class="nav_content"><%= link_to "info", '/main/info', :class => "nav_li" %></div>
+        
+    <% end %>
+   
+    </div>
 
-<div class="col-md-5">
-    <%=render 'jscolorpicker'%>
-    <%=render 'create'%>
+</head>
+
+<body>
+<div class="header">
+  <br>
+  <center><img class="logo"></center>
+  <img  class="logo-hover-preload" style='display:none;'>
 </div>
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <%=render 'jscolorpicker'%>
+        <%=render 'create'%>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+</body>

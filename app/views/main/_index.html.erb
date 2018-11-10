@@ -1,0 +1,159 @@
+<div>
+<% if user_signed_in? %>
+        <%= link_to "회원정보", edit_user_registration_path %>
+        <%= link_to "로그아웃", destroy_user_session_path, method: :delete %>
+<% else %>
+        <%= link_to "로그인", user_session_path %>
+        <%= link_to "회원가입", "/users/sign_up" %>
+<% end %>
+
+</div>
+<hr/>
+<%= alert %>
+<%= notice %>
+<h2 style="font-weight: bold">로그인 정보</h2>
+<% if user_signed_in? %>
+    <div>
+        아이디 : <%= current_user.email %><br/>
+        유저 No. : <%= current_user.id %><br>
+        구별: <%=current_user.count%>/ 액수 <%=current_user.final%>
+    </div>
+<% else %>
+    로그인 되어있지 않음.
+<% end %>
+
+
+
+
+<%=link_to '알바 생성', alba_create_path %>
+
+<%@albas.each do|a|%>
+
+<%if(a.picked==true)%>
+<h3>CURRENT:<%=a.name%>/<%=a.place%></h3>
+<form action="/main/create2/<%=a.distinguish%>/<%=current_user.id%>" method="get"%>
+ <input type="hidden" name="distinguish_id" value=<%=a.distinguish%>>
+ <input type="hidden" name="final_money" value=<%=a.final2%>>
+ 
+ <input type="submit" value="생성">
+</form>
+
+<%end%>
+
+<%end%>
+
+
+
+
+
+<!-- 알바 야간수당계산.....쉽게 고칠것..-->
+<!--일단 index에서 만들었지만 이것을 home으로 옮길거다-->
+<!--문제. 오전1시부터 오전 6시까지일한다면? 즉 입력값이 1~6이라면 22시이전으로 계산되어서, 야간수당계산 안들어감. 들어가야하는데-->
+<%@albas.each do |a|%>
+<!--기본정보-->
+
+<h3><%=a.name%>/<%=a.place%></h3> <br>
+ <%=a.s_hour%>시 <%=a.s_minute%>분- <%=a.e_hour%>시 <%=a.e_minute%>분 <br>
+시급: <%=a.money_hour%> 
+<br/> 색: <%=a.color%>
+<br>
+<!--만약, 종료시간의 '분'이 시작시간의 '분' 보다작다면 종료시간의 '시간'에서 1 빼고 종료시간의 '분'에 60추가-->
+<!--ex) 16:50~ 23:30 분까지 일한다면 a.e_hour=22, a.e_minute=90이된다-->
+<% if a.e_minute<a.s_minute%>
+<%a.e_minute=a.e_minute+60%>
+<%a.e_hour=a.e_hour-1%>
+<%end%>
+<!--총 근무시간 => 종료시간 시,분 - 시작시간 시,분 -->
+
+총근무시간: <%= @a=a.e_hour-a.s_hour%>시 <%= @b=a.e_minute-a.s_minute%>분 
+
+
+
+<% if (a.final!=0) %>
+최종일급: <%=a.final%>
+<%else%>
+<h4>Fix</h4>
+<%end%>`
+
+<% @a_fix=@a%>
+<% @b_fix=@b%>
+<!--야간보너스 계산을 위해 하는짓. 10시이전에 몇시간 근무했는지 계산한다-->
+<% @a10=21-a.s_hour%>
+<% @b10=60-a.s_minute%>
+
+
+<!--만약 야간수당을 받는 식당이면서, 근무 종료시간이 오후10시를 넘어간다면, 야간수당 계산을한다-->
+<% if a.nightbonus && (a.e_hour>=22)%>
+        <!--야간수당 계산 case1: 근무시작시간이 오후10시보다 빠를때.-->
+     <% if a.s_hour<=22%>
+            <h4>야간수당 적용</h4>
+            <!--야간수당을 받는 '시간' 만계산 p@bs. 위의연산으로 실제값 보다 -1 되어있을수있는데 상관없음-->
+            <%@e=a.e_hour-22%>
+            <% @c=Integer((a.e_minute/60.0)*a.money_hour)%>  
+            <% @d=@c+@a*a.money_hour%>
+            <!--근무시���에서, 야간근무시간을 뺀다.-->
+            <% @a=@a-@e%>
+            <!--@c에는 총 야간근로시간이 1시간 70분이라면 70분동안 한 일에대한 야간근로수당이 계산된다. (위에서 분에+60을 해주는 연산이 실행 될때)       -->
+            <% @c=Integer((a.e_minute/60.0)*(a.money_hour*1.5))%>
+            <!--@d 에는 야간근로시간인 10시이전에 한 일에대한 수당과, @c를 합산한다-->
+            <% @d=@c+Integer((@b10/60.0)*a.money_hour)+@a10*a.money_hour%>
+            <!-- 마지막으로 처음에 계산한 10시이후로 일한 ' 시간' 에대한 수당이 계산된다-->
+            <!--ex) 1시간 70분 야간근로로 일했다면 '1시간' 에 대한 계산이 들어가는건 @c와 함께보기 -->
+            <%@final=Integer(@d+@e*(a.money_hour*1.5))%>
+    <%else%>
+            <h4>야간수당 적용</h4>
+            
+            <!--근로시작시간대가 첨부터 10시넘어가면 걍 시급에 1.5곱해서 계산-->
+            <% @c=Integer((@b/60.0)*a.money_hour*1.5)%>    <% @d=@c+@a*a.money_hour*1.5%> <br>
+            <%@final=Integer(@d)%>
+    <%end%>
+    
+    
+    
+    
+<%else%>
+<!--야간근로를 안할때-->
+
+<% @c=Integer((@b/60.0)*a.money_hour)%>    <% @d=@c+@a*a.money_hour%>
+<%@final=@d%>
+<%end%>
+
+<!--휴일근로수당 계산. 최종것에다가 50프로-->
+<% if a.holidaybonus%>
+<h4>휴일근로수당 적용</h4>
+<% @c=Integer((@b_fix/60.0)*a.money_hour)%>    <% @d=@c+@a_fix*a.money_hour%> 
+
+<%@final=Integer(@final+@d*0.5)%>
+   <%@final%>
+<%end%>
+  <!---->
+  <h4> 최종금액:<%=@final%>원</h4>
+  <!---->
+<br>
+<!--삭제-->
+<form action="main/delete/<%=a.id%>" method="get">
+    <input type="submit" value="삭제">
+</form>
+<%if (a.final==0)%>
+
+<!--모델을 복사해내면서, 최종금액을 저장한다. 복사하는 대상이되는 모델은, final값이 존재하지않는다! 같이넣어줌-->
+<!-- 알바이름,시간,시급이 같은것들의 모델수를 비교하면 daily 그거 할수있지않을까!-->
+<form action="/main/copy/<%=a.distinguish%>/<%=current_user.id%>" method="get">
+    <input type="hidden" name="final_money" value=<%= @final%>>
+    <input type="submit" value="복사">
+    
+</form>
+<%end%>
+
+<hr>
+<%if a.final%>
+<%@money=@money+a.final%>
+<%else%>
+a.final 업서요..
+<%end%>
+
+
+<%end%>
+
+<h1> <%=@money%></h1>
+

@@ -1,0 +1,107 @@
+
+<%=form_tag(main_create_path(current_user.id),method: 'post') do%>
+            
+    <div class= "form-group">
+        <label for="input_name">알바 이름 </label>
+        <input class="form-control" type="text" placeholder="약칭을 입력해주세요." name="alba_name" id="input_name" required='true'/>
+    </div>
+    
+    <div class= "form-group">
+        <label for="input_place">근무 장소 </label>
+        <input class="form-control" type="text" placeholder="내용을 입력해주세요." name="alba_place" id="input_place"/>
+    </div>
+    
+    <!-- 근무 시작/종료 시간은 시, 분으로 나눠서 폼을 두개 만들어야함! -->
+    <!-- 근무 시작 시간 -->
+   
+    
+    <div class="form-group">
+        <label>근무 시작 시간</label>
+        <table cols=2 border='0px none' class="table-time">
+            <td width="50%">
+                <select class="form-control" id="start_time_h" name="alba_s_hour">
+                    <% for i in 0..30 %>
+                    <% if i<24 %>
+                        <option><%= i %>시</option>
+                    <% else %>
+                        <option><%= i %>시 (오전 <%= i-24 %>시)</option>
+                    <% end %>
+                    <% end %>
+                </select>
+            </td>
+            <td width="50%">
+                <select class="form-control" id="start_time_m" name="alba_s_minute">
+                    <% for i in 0..11 %>
+                      <option><%= i*5 %>분</option>
+                      <% end %>
+                </select>
+            </td>
+        </table>
+    </div>
+    
+    
+    
+    
+    <!-- 근무 시작 시간 끝 / 근무 종료 시간 -->
+    
+    <div class="form-group">
+        <label>근무 종료 시간</label>
+        <table cols=2 border='0px none' class="table-time">
+            <td width="50%" >
+              <select class="form-control" id="end_time_h" name="alba_e_hour">
+                <% for i in 0..30 %>
+                 <%if i<24%>
+                    <option><%= i %>시</option>
+                  <%else%>
+                     <option><%= i %>시 /오전(<%=i-24%>시)</option>
+                
+                  <%end%>
+                <% end %>
+              </select> 
+            </td>
+            <td width="50%"  >
+              <select class="form-control" id="end_time_m" name="alba_e_minute">
+              <% for i in 0..11 %>
+              <option><%= i*5 %>분</option>
+              <% end %>
+              </select> 
+            </td>
+        </table>
+    </div>
+    
+    
+    <!-- 근무 종료 시간 끝 /시급 -->
+   <div class="form-group">
+        <label for="input_money_hour">시급 </label>
+        <input class="form-control" type="number" placeholder="시급을 입력해주세요." name= "alba_money_hour" id="input_money_hour" required='true'
+        min="0" max="100000" step="1000" />
+    </div>
+    
+    <!-- 주휴/야간/휴일/연장 유무체크 -->
+    <div class="form-check">    
+        <input type="checkbox" class="form-check-input" id="exampleCheck1" name="alba_weekbonus" >
+        <label  class="form-check-label" for="exampleCheck1"
+        data-balloon="※ 주휴수당에 대한 설명 해주세요 " data-balloon-pos="right"/>주휴수당</label>
+    </div>
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck2" name="alba_nightbonus">
+      <label class="form-check-label" for="exampleCheck2"
+       data-balloon="※ 5인 이상의 사업장에서만 적용됩니다." data-balloon-pos="right"/>야간근로수당</label>
+    </div>
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck3" name="alba_holidaybonus">
+      <label class="form-check-label" for="exampleCheck3"
+      data-balloon="※ 휴일수당에 대한 설명 해주세요." data-balloon-pos="right"/>휴일근로수당</label>
+    </div>
+    <!--<div class="form-check">-->
+    <!--  <input type="checkbox" class="form-check-input" id="exampleCheck1" name="alba_extendbonus">-->
+    <!--  <label class="form-check-label" for="exampleCheck1">연장근로수당</label>-->
+    <!--</div>-->
+    
+    <%=render 'colorpicker'%>
+   
+    <button type="submit" class="btn btn-primary">저장</button>
+<% end %>
+
+
+   

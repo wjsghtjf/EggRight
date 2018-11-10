@@ -1,0 +1,187 @@
+// Place all the styles related to the main controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.logo {
+   content: url('logo_hs.png');
+    
+    width: 8em;
+    height: 6em;
+    vertical-align: bottom;
+    
+    -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.logo:hover,.logo-hover-preload {
+    content: url('logo_hs_hide.png');
+    
+    
+    width: 8em;
+    height: 6em;
+    vertical-align: bottom;
+    
+    -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+
+// .tip {
+//     content: url('Al_tip.jpeg');
+    
+//     width: 10em;
+//     height: 6em;
+//     vertical-align: bottom;
+// }
+
+// .stats {
+//     content: url('Al_stats.jpeg');
+    
+//     width: 14em;
+//     height: 6em;
+//     vertical-align: bottom;
+// }
+
+
+
+.month {
+    width: 5em;
+    height: 3em;
+}
+
+
+.header {
+    width : 100%;
+    height: 7em;
+}
+
+.calendar {
+    width : 100%;
+    border: 2px solid #eee;
+    padding: 1em;
+}
+
+.table-time td:first-child{
+    padding-right:10px;
+    
+}
+
+
+.table-time td:second-child{
+    padding-left:10px;
+    
+}
+.day{
+    height : 7em;
+    vertical-align: top;
+    text-align: right;
+    
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+
+.day:hover{
+    height : 7em;
+    background-color : #F1F1F1;
+}
+
+.row {
+    width : 100%;
+}
+
+
+.swift {
+    text-align: center;
+    
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+    
+}
+.cursor-pointer,.cursor-pointer>label{
+    cursor: pointer;
+    
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.col-md-3 {
+    padding: 3em;
+}
+
+.col-md-6 {
+    padding: 3em; 
+    
+}
+
+
+.bubble 
+{
+    position: relative;
+    width: 23em;
+    height: 60px;
+    padding: 1em;
+    background: #fcf8e3;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    border-radius: 16px;
+    box-shadow: 5px 5px 3px #aaaaaa;
+}
+
+.bubble:after 
+{
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 10px 22px 10px 0;
+    border-color: transparent #fcf8e3;
+    display: block;
+    width: 0;
+    z-index: 1;
+    left: -22px;
+    top: 18px;
+}
+
+p {
+    
+    text-align: center;
+    word-break : break-all;
+}
+
+
+
+#tbCalendarYM {
+    
+    text-align: center;
+    font-size: 1.5em;
+    height: 2em;
+    
+    
+    -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+    
+    
+.hide{
+    display: none;
+}

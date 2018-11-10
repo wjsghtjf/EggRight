@@ -1,0 +1,127 @@
+#video { 
+     position: fixed;
+     top: 0px;
+     left: 0px;
+     min-width: 100%;
+     min-height: 100%;
+     width: auto;
+     height: auto;
+     z-index: -1;
+     overflow: hidden;
+}
+
+
+.login_frame {
+	
+	margin-top: 5em;
+	background-color: white;
+	opacity: 0.8;
+	// border: 2px solid #888;
+	width: 60%;
+	height: 50em;
+	
+}
+
+.logo_main {
+   content: url('logo_hs.png');
+   
+    
+    width: 13em;
+    height: 11em;
+    vertical-align: bottom;
+    margin-top: 5em;
+}
+
+.logo_main:hover,.logo-hover-preload {
+    content: url('logo_hs_hide.png');
+    
+    
+    width: 13em;
+    height: 11em;
+    vertical-align: bottom;
+}
+
+.field {
+	position: relative;
+	z-index: 1;
+	display: inline-block;
+	margin: 1em;
+	max-width: 350px;
+	width: calc(100% - 2em);
+	vertical-align: top;
+}
+
+.login_label {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	padding: 0 0.25em;
+	width: 50%;
+	height: calc(100% - 1em);
+	text-align: left;
+	pointer-events: none;
+}
+
+.login_label2 {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	padding: 0 0.25em;
+	width: 50%;
+	height: calc(100% - 0.6em);
+	text-align: left;
+	margin-left: 4em;
+}
+
+
+.login_field {
+    
+    margin-top: 1em;
+	padding: 0.85em 0.15em;
+	width: 100%;
+	background: transparent;
+	color: #595F6E;
+	border-left: transparent;
+	border-right: transparent;
+	border-top: transparent;
+	border-bottom: 1px solid #ccc;
+	
+}
+
+.login_field:focus {
+    
+    outline: none;
+   
+}
+
+
+.button_login {
+	
+	color: #d99923;
+	border: 1px solid #edd464;
+	background: transparent;
+	padding: 0.5em;
+	width: 40%;
+	border-radius: 10px;
+	
+}
+
+.button_login:hover {
+	
+	background: #edd464;
+	color: white;
+	
+	
+}
+
+.link_color {
+	
+	color: black;
+	
+}
+
+.link_color:visited {
+	
+	color: black;
+	
+}

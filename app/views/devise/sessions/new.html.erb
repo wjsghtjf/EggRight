@@ -1,0 +1,51 @@
+<!-- 로그인 페이지 -->
+<video id="video" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0">
+      <source src="/assets/backvideo.mp4">
+
+</video>
+
+<div class="row">
+  <div class="col-md-3">
+    
+  </div>
+  <center>
+  <div class="col-md-6">
+    <div class="login_frame">
+    <img src="/assets/logo_hs.png" class="logo_main">
+    <img  class="logo-hover-preload" style='display:none'><br><br><br>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.label :이메일, :class => "login_label" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "login_field" %>
+  </div>
+<br><br>
+  <div class="field">
+    <%= f.label :비밀번호, :class => "login_label" %><br />
+    <%= f.password_field :password, autocomplete: "current-password", :class => "login_field" %>
+  </div>
+
+  <!--<% if devise_mapping.rememberable? -%>-->
+  <!--  <div class="field">-->
+  <!--    <%= f.check_box :remember_me %>-->
+  <!--    <%= f.label :remember_me %>-->
+  <!--  </div>-->
+  <!--<% end -%>-->
+  
+<br><br>
+
+  <div class="actions">
+    <%= f.submit "로그인", :class => "button_login" %>
+  </div>
+<% end %> <br>
+
+
+
+<%= render "devise/shared/links" %>
+</div>
+</div>
+</center>
+<div class="col-md-3"></div>
+</div>
+
+

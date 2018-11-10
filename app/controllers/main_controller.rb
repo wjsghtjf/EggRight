@@ -99,14 +99,17 @@ class MainController < ApplicationController
   end
   
   def copy
-    # @albas=Alba.all
+     @albas=Alba.all
+     @a=0
      
-     @alba2=Alba.where("picked= :u_id", {:u_id => true})
-    # @albas.each do |a|
-    #   a.picked=false  
-    # end
+    @albas.each do |a|
+      if(a.picked==true)
+       @a=a.id
+       
+      end
+    end
+     @alba2=Alba.find(@a)
      @alba2.picked=false
-     
      @alba=Alba.find(params[:alba_count])
      @alba.user_distinguish=params[:user_id]
      @alba.picked=true
